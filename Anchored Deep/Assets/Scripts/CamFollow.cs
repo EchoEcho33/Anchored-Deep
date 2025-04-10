@@ -11,7 +11,7 @@ public class CamFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(target.transform.position.x, target.transform.position.y + 120.0f, target.transform.position.z + -120.0f);
+        offset = new Vector3(target.transform.position.x, target.transform.position.y + 30.0f, target.transform.position.z + -30.0f);
     }
 
     // Update is called once per frame
