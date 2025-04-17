@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.D)){
             if(Input.GetKey(KeyCode.S))
             {
-                BoatLeft();
+                //BoatLeft();
             } else 
             {
                 BoatRight();
@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.S))
             {
-                BoatRight();
+                //BoatRight();
             } else
             {
                 BoatLeft();
@@ -49,12 +49,12 @@ public class Movement : MonoBehaviour
             transform.position += new Vector3(rotated.x, 0, rotated.z) * playerSpeed * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            Vector3 parentAngle = transform.eulerAngles;
-            Vector3 rotated = Quaternion.Euler(parentAngle) * new Vector3(0, 0, -1);
-            transform.position += new Vector3(rotated.x, 0, rotated.z) * playerSpeed * Time.deltaTime;
-        }
+        // if (Input.GetKey(KeyCode.S))
+        // {
+        //     Vector3 parentAngle = transform.eulerAngles;
+        //     Vector3 rotated = Quaternion.Euler(parentAngle) * new Vector3(0, 0, -1);
+        //     transform.position += new Vector3(rotated.x, 0, rotated.z) * playerSpeed * Time.deltaTime;
+        // }
 
         // if(Input.GetKeyUp(KeyCode.D) && Input.GetKeyUp(KeyCode.A))
         // {
