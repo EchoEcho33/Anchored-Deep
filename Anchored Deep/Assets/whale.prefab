@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2250496646672847741
+--- !u!1001 &3642879037135823301
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -166,28 +166,28 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 087a2ac1c75bbc34aa1d66d7766c1d5b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4879654136741349922}
+      addedObject: {fileID: 2675557811296460357}
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 087a2ac1c75bbc34aa1d66d7766c1d5b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3516513965172270841}
+      addedObject: {fileID: 2095194541569115698}
   m_SourcePrefab: {fileID: 100100000, guid: 087a2ac1c75bbc34aa1d66d7766c1d5b, type: 3}
---- !u!111 &3427550371707799036 stripped
+--- !u!111 &154352805307545412 stripped
 Animation:
   m_CorrespondingSourceObject: {fileID: -5716681864270162303, guid: 087a2ac1c75bbc34aa1d66d7766c1d5b, type: 3}
-  m_PrefabInstance: {fileID: 2250496646672847741}
+  m_PrefabInstance: {fileID: 3642879037135823301}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7789736214229928564 stripped
+--- !u!1 &4733272456288925900 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 087a2ac1c75bbc34aa1d66d7766c1d5b, type: 3}
-  m_PrefabInstance: {fileID: 2250496646672847741}
+  m_PrefabInstance: {fileID: 3642879037135823301}
   m_PrefabAsset: {fileID: 0}
---- !u!195 &4879654136741349922
+--- !u!195 &2675557811296460357
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7789736214229928564}
+  m_GameObject: {fileID: 4733272456288925900}
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
@@ -203,19 +203,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3516513965172270841
+--- !u!114 &2095194541569115698
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7789736214229928564}
+  m_GameObject: {fileID: 4733272456288925900}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3004b7ccfc9ef3147bb0c087e357f94f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 4879654136741349922}
+  agent: {fileID: 2675557811296460357}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -231,4 +231,4 @@ MonoBehaviour:
   attackRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
-  anim: {fileID: 3427550371707799036}
+  anim: {fileID: 154352805307545412}
