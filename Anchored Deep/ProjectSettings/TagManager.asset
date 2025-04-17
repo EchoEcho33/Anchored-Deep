@@ -12,7 +12,9 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - 
+  - whatIsPlayer
+  - whatIsGround
+
   - 
   - 
   - 
