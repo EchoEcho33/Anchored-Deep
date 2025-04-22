@@ -14,10 +14,18 @@ public class Enemy : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    public float health;
+    [SerializeField] private float maxHealth = 100;
+
+    [SerializeField] private GameObject hitEffect;
+
+    private float currentHealth;
+
+    [SerializeField] private Healthbar healthbar;
+
+    private AudioSource audioSource;
 
     //Patroling
-public Vector3 walkPoint;
+    public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
@@ -30,6 +38,13 @@ public Vector3 walkPoint;
     public bool playerInSightRange, playerInAttackRange;
 
     public Animation anim;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthbar.UpdateHealthBar(maxHealth, currentHealth);
+        audioSource = GetComponent<AudioSource>();   
+    }
 
     private void Awake()
     {
@@ -105,11 +120,13 @@ public Vector3 walkPoint;
         alreadyAttacked = false;
     }
 
+    /**
     public void TakeDamage(int damage) {
-        health -= damage;
+        currentHealth -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 2f);
+        if (currentHealth <= 0) Invoke(nameof(DestroyEnemy), 2f);
     }
+    */
 
     private void DestroyEnemy() {
         Destroy(gameObject);
@@ -121,5 +138,18 @@ public Vector3 walkPoint;
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    private void OnMouseDown()
+    {
+        audioSource.Play();
+        currentHealth -= Random.Range(1f, 10f);
+
+        if (currentHealth <= 0) {
+            Invoke(nameof(DestroyEnemy), 2f);
+        } else {
+            healthbar.UpdateHealthBar(maxHealth, currentHealth);
+            //Instantiate(hitEffect, transform.position, Quaternion.identity);
+        }
     }
 }
