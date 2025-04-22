@@ -140,16 +140,25 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 
+    private bool cooldown = false;
+
+    private void ResetCooldown(){
+        cooldown = false;
+    }
     private void OnMouseDown()
     {
-        audioSource.Play();
-        currentHealth -= Random.Range(1f, 10f);
+        if ( cooldown == false ) {
+            audioSource.Play();
+            currentHealth -= Random.Range(5f, 20f);
 
-        if (currentHealth <= 0) {
-            Invoke(nameof(DestroyEnemy), 2f);
-        } else {
-            healthbar.UpdateHealthBar(maxHealth, currentHealth);
-            //Instantiate(hitEffect, transform.position, Quaternion.identity);
+            if (currentHealth <= 0) {
+                Invoke(nameof(DestroyEnemy), 2f);
+            } else {
+                healthbar.UpdateHealthBar(maxHealth, currentHealth);
+                //Instantiate(hitEffect, transform.position, Quaternion.identity);
+            }
+            Invoke("ResetCooldown",1.0f);
+            cooldown = true;
         }
     }
 }
