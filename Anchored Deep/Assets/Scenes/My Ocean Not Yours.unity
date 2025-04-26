@@ -537,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &880411643
 RectTransform:
   m_ObjectHideFlags: 0
@@ -634,6 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbarSprite: {fileID: 1603289738}
+  reduceSpeed: 1
 --- !u!1 &891274242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,6 +1677,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4733272456288925900, guid: 9761233d01a6b1544a539d30557b0630, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5641143531904812340}
+    - targetCorrespondingSourceObject: {fileID: 4733272456288925900, guid: 9761233d01a6b1544a539d30557b0630, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5641143531904812344}
   m_SourcePrefab: {fileID: 100100000, guid: 9761233d01a6b1544a539d30557b0630, type: 3}
 --- !u!4 &5641143531904812335 stripped
 Transform:
@@ -1799,6 +1803,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5641143531904812344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812484418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d15f61ca3163a4abba7a4d11ac4ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  radius: 5
+  force: 0
+  explodeOnCollision: 0
+  effectsPrefab: {fileID: 5033180708955247871, guid: 152689d6752175f4fa353ae19681fb33, type: 3}
+  effectDisplayTime: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Novasloth;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    //Healthbar
     [SerializeField] private float maxHealth = 100;
 
     [SerializeField] private GameObject hitEffect;
@@ -22,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Healthbar healthbar;
 
+    //Explosion Soundeffect
     private AudioSource audioSource;
 
     //Patroling
@@ -65,7 +68,10 @@ public class Enemy : MonoBehaviour
 
     private void Patroling() {
         anim = GetComponent<Animation>();
-        anim.Play("fastswim");
+        
+        if (!anim.IsPlaying("dive")) {
+            anim.Play("fastswim");
+        }
 
         if (!walkPointSet) SearchWalkPoint();
 
@@ -96,7 +102,9 @@ public class Enemy : MonoBehaviour
     private void ChasePlayer() {
         agent.SetDestination(player.position);
         anim = GetComponent<Animation>();
-        anim.Play("fastswim");
+        if (!anim.IsPlaying("dive")) {
+            anim.Play("fastswim");
+        }
     }
 
     private void AttackPlayer() {
@@ -145,17 +153,23 @@ public class Enemy : MonoBehaviour
     private void ResetCooldown(){
         cooldown = false;
     }
+
     private void OnMouseDown()
     {
+        if (!healthbar.gameObject.activeSelf) {
+            healthbar.gameObject.SetActive(true);
+        }
+
         if ( cooldown == false ) {
             audioSource.Play();
             currentHealth -= Random.Range(5f, 20f);
+            //DoExplosion();
 
             if (currentHealth <= 0) {
-                Invoke(nameof(DestroyEnemy), 2f);
+                Invoke(nameof(DestroyEnemy), 0f);
             } else {
                 healthbar.UpdateHealthBar(maxHealth, currentHealth);
-                //Instantiate(hitEffect, transform.position, Quaternion.identity);
+                Instantiate(hitEffect, transform.position, Quaternion.identity);
             }
             Invoke("ResetCooldown",1.0f);
             cooldown = true;
