@@ -46,6 +46,7 @@ public class Movement : MonoBehaviour
         {
             Vector3 parentAngle = transform.eulerAngles;
             Vector3 rotated = Quaternion.Euler(parentAngle) * new Vector3(0, 0, 1);
+            float velocity = playerSpeed * Time.deltaTime;
             transform.position += new Vector3(rotated.x, 0, rotated.z) * playerSpeed * Time.deltaTime;
         }
 
