@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
     private AudioSource audioSource;
 
     //Patroling
-    public Vector3 walkPoint;
+public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
@@ -50,13 +50,6 @@ public class Enemy : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     public Animation anim;
-
-    private void Start()
-    {
-        currentHealth = maxHealth;
-        healthbar.UpdateHealthBar(maxHealth, currentHealth);
-        audioSource = GetComponent<AudioSource>();   
-    }
 
     private void Awake()
     {
@@ -77,10 +70,7 @@ public class Enemy : MonoBehaviour
 
     private void Patroling() {
         anim = GetComponent<Animation>();
-        
-        if (!anim.IsPlaying("dive")) {
-            anim.Play("fastswim");
-        }
+        anim.Play("fastswim");
 
         if (!walkPointSet) SearchWalkPoint();
 
@@ -111,9 +101,7 @@ public class Enemy : MonoBehaviour
     private void ChasePlayer() {
         agent.SetDestination(player.position);
         anim = GetComponent<Animation>();
-        if (!anim.IsPlaying("dive")) {
-            anim.Play("fastswim");
-        }
+        anim.Play("fastswim");
     }
 
     private void AttackPlayer() {
