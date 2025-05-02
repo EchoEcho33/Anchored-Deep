@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Microsoft.Unity.VisualStudio.Editor;
 using Novasloth;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -18,11 +21,17 @@ public class Enemy : MonoBehaviour
     //Healthbar
     [SerializeField] private float maxHealth = 100;
 
+    [SerializeField] private float playerHealth = 100;
+
     [SerializeField] private GameObject hitEffect;
 
     private float currentHealth;
 
+    private float playerCurrentHealth;
+
     [SerializeField] private Healthbar healthbar;
+
+    [SerializeField] private Healthbar playerHealthbar;
 
     //Explosion Soundeffect
     private AudioSource audioSource;
@@ -33,7 +42,7 @@ public class Enemy : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
-    public float timeBetweenAttacks;
+    public float timeBetweenAttacks = 3.0f;
     bool alreadyAttacked;
 
     //States
@@ -115,6 +124,8 @@ public class Enemy : MonoBehaviour
 
         if (!alreadyAttacked) {
             ///Attack code here
+            TakeDamage(1.0f);
+            
             anim = GetComponent<Animation>();
             anim["dive"].speed = 3.0f;
             anim.Play("dive");
@@ -128,13 +139,15 @@ public class Enemy : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    /**
-    public void TakeDamage(int damage) {
-        currentHealth -= damage;
+    public void TakeDamage(float damage) {
+        playerCurrentHealth -= damage;
 
-        if (currentHealth <= 0) Invoke(nameof(DestroyEnemy), 2f);
+        if (playerCurrentHealth <= 0) {
+            SceneManager.LoadScene("Death");
+        } else {
+            playerHealthbar.UpdateHealthBar(playerHealth, playerCurrentHealth);
+        }
     }
-    */
 
     private void DestroyEnemy() {
         Destroy(gameObject);
@@ -154,6 +167,7 @@ public class Enemy : MonoBehaviour
         cooldown = false;
     }
 
+    
     private void OnMouseDown()
     {
         if (!healthbar.gameObject.activeSelf) {
@@ -163,7 +177,6 @@ public class Enemy : MonoBehaviour
         if ( cooldown == false ) {
             audioSource.Play();
             currentHealth -= Random.Range(5f, 20f);
-            //DoExplosion();
 
             if (currentHealth <= 0) {
                 Invoke(nameof(DestroyEnemy), 0f);
