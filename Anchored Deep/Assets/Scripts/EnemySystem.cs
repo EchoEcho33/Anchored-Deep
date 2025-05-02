@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        playerCurrentHealth = playerHealth;
         healthbar.UpdateHealthBar(maxHealth, currentHealth);
         audioSource = GetComponent<AudioSource>();   
     }
@@ -124,7 +125,7 @@ public class Enemy : MonoBehaviour
 
         if (!alreadyAttacked) {
             ///Attack code here
-            TakeDamage(1.0f);
+            TakeDamage(10.0f);
             
             anim = GetComponent<Animation>();
             anim["dive"].speed = 3.0f;
