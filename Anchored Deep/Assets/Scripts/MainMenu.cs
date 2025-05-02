@@ -11,5 +11,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Ocean");
     }
+
+    public void Quit() 
+    {
+        Application.Quit();
+    }
     
 }
